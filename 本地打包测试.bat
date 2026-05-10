@@ -33,7 +33,7 @@ python -m PyInstaller --onefile --windowed --name "RGBSyncControl" ^
 
 echo.
 if %errorlevel% == 0 (
-    echo ✅ 完成！文件位于 dist/Hue-RGB-Sync.exe
+    echo ✅ 完成！文件位于 dist/RGBSyncControl.exe
 ) else (
     echo ❌ 打包失败。
 )

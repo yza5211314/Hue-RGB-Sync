@@ -2,6 +2,7 @@ name: Build Executable
 
 on:
   push:
+    branches: [ "main", "master" ]
     tags:
       - 'v*'  # 当你推送 v1.0.0、v1.2 这样的标签时自动触发
   workflow_dispatch:  # 也可以手动在网页上点按钮触发
@@ -40,8 +41,15 @@ jobs:
             --uac-admin `
             gui_control.py
 
+      - name: 上传构件 (Actions Tab)
+        uses: actions/upload-artifact@v4
+        with:
+          name: RGBSyncControl-Binary
+          path: dist/RGBSyncControl.exe
+
       - name: 上传到 Releases
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: dist/Hue-RGB-Sync.exe
+          files: dist/RGBSyncControl.exe
+          generate_release_notes: true
