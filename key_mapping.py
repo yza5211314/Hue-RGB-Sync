@@ -19,6 +19,7 @@ MK850 键盘按键映射配置
 
 import configparser
 import os
+import sys
 
 # ============================================================================
 # 从INI配置文件加载按键映射
@@ -28,8 +29,23 @@ def load_key_mapping_from_ini():
     """从INI配置文件加载按键映射"""
     config = configparser.ConfigParser()
     
-    # 获取INI文件路径（与当前脚本同目录）
-    ini_path = os.path.join(os.path.dirname(__file__), 'mk850_key_mapping.ini')
+    # 搜索路径优先级：
+    # 1. 内部打包路径 (PyInstaller _MEIPASS) - 对应 --add-data 打包进来的文件
+    # 2. EXE 同级目录 - 允许用户在外部放置 INI 进行覆盖
+    # 3. 脚本同级目录 - 开发环境
+    search_paths = []
+    if hasattr(sys, '_MEIPASS'):
+        search_paths.append(sys._MEIPASS)
+    if getattr(sys, 'frozen', False):
+        search_paths.append(os.path.dirname(sys.executable))
+    search_paths.append(os.path.dirname(os.path.abspath(__file__)))
+
+    ini_path = None
+    for path in search_paths:
+        target = os.path.join(path, 'mk850_key_mapping.ini')
+        if os.path.exists(target):
+            ini_path = target
+            break
     
     if not os.path.exists(ini_path):
         print(f"⚠️  警告: 配置文件不存在: {ini_path}")
