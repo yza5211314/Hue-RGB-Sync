@@ -4,7 +4,7 @@
 
 RGB灯光同步控制系统，支持：
 - ✅ 屏幕取色同步到RGB设备
-- ✅ MK850键盘独立控制（98键）
+- ✅ MK850键盘独立控制（105键）
 - ✅ TSG600鼠标控制
 - ✅ 虚拟键盘可视化操作
 - ✅ 紧凑型控制中心布局
@@ -63,20 +63,10 @@ python gui_control.py
 
 ## 🔧 常用操作
 
-### 查看按键映射
-```bash
-python key_mapping.py
-```
-
-### 查看常用按键参考
-```bash
-python key_mapping_quick_ref.py
-```
-
-### 清理无用文件
-```bash
-python cleanup.py
-```
+### 查看按键映射配置
+1. 编辑 `key_mapping.py` 查看逻辑映射
+2. 修改 `mk850_key_mapping.ini` 自定义布局
+3. 运行 `python key_mapping.py` 可预览当前所有按键的映射表
 
 ---
 
