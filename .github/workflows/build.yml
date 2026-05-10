@@ -30,7 +30,7 @@ jobs:
 
       - name: 打包成 exe
         run: |
-          pyinstaller --onefile --windowed --name "RGBSyncControl" `
+          pyinstaller --onefile --windowed --name "Hue-RGB-Sync" `
             --add-data "mk850_key_mapping.ini;." `
             --add-data "devices;devices" `
             --collect-all hidapi `
@@ -44,12 +44,12 @@ jobs:
       - name: 上传构件 (Actions Tab)
         uses: actions/upload-artifact@v4
         with:
-          name: RGBSyncControl-Binary
-          path: dist/RGBSyncControl.exe
+          name: Hue-RGB-Sync-EXE
+          path: dist/Hue-RGB-Sync.exe
 
       - name: 上传到 Releases
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: dist/RGBSyncControl.exe
+          files: dist/Hue-RGB-Sync.exe
           generate_release_notes: true

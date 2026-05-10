@@ -20,7 +20,7 @@ if exist dist rmdir /s /q dist
 if exist build rmdir /s /q build
 
 echo [2/2] 正在执行打包...
-python -m PyInstaller --onefile --windowed --name "RGBSyncControl" ^
+python -m PyInstaller --onefile --windowed --name "Hue-RGB-Sync" ^
   --add-data "mk850_key_mapping.ini;." ^
   --add-data "devices;devices" ^
   --collect-all hidapi ^
@@ -33,7 +33,7 @@ python -m PyInstaller --onefile --windowed --name "RGBSyncControl" ^
 
 echo.
 if %errorlevel% == 0 (
-    echo ✅ 完成！文件位于 dist/RGBSyncControl.exe
+    echo ✅ 完成！文件位于 dist/Hue-RGB-Sync.exe
 ) else (
     echo ❌ 打包失败。
 )

@@ -22,7 +22,7 @@
    - 推荐：右键点击 `启动控制面板.bat` -> **以管理员身份运行**
    - 命令行：`python gui_control.py`
  3. **获取 EXE 版本**：
-    - 访问项目 GitHub 仓库的 `Actions` 页面，下载最新的 `RGB-Sync-Control-EXE` 构件。
+    - 访问项目 GitHub 仓库的 `Actions` 页面，下载最新的 `Hue-RGB-Sync-EXE` 构件。
 
 ## 📖 详细文档
 - 🚀 快速开始指南
